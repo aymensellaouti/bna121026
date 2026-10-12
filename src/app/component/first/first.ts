@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Seconf } from '../seconf/seconf';
 
 @Component({
@@ -11,4 +11,13 @@ import { Seconf } from '../seconf/seconf';
   // El Html mta3i
   templateUrl: './first.html',
 })
-export class First {}
+export class First {
+  name = signal('amira');
+  isHidden = signal(false)
+  constructor() {
+
+  }
+  showHide() {
+    this.isHidden.update(isHidden => !isHidden)
+  }
+}

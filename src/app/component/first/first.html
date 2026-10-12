@@ -1,5 +1,8 @@
-<p>first works!</p>
-
+<p [hidden]="isHidden()">Hello {{name()}}</p>
+<!-- Ki tclicki 3ayet lel methode showHide -->
+<button
+  (click)="showHide()"
+class="btn btn-danger">show hide</button>
 <div class="alert alert-danger">
   <app-seconf/>
 </div>
