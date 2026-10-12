@@ -2,9 +2,10 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { First } from './component/first/first';
 import { Seconf } from './component/seconf/seconf';
+import { Color } from './components/color/color';
 
 @Component({
-  imports: [First, Seconf],
+  imports: [First, Seconf, Color],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
