@@ -1,0 +1,13 @@
+<ol class="list-group">
+  @for ( cv of cvs(); track cv.id ) {
+    <li class="list-group list-group-item">
+      <!-- cvItem(cv) -->
+      <app-cv-item [cv]="cv" />
+    </li>
+  }
+  @empty {
+    <div class="alert alert-danger">
+      Il n'existe aucun élément dans la liste
+    </div>
+  }
+</ol>

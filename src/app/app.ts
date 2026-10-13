@@ -7,9 +7,10 @@ import { Counter } from './signals/counter/counter';
 import { FirstSignalComponent } from './signals/first-signal/first-signal.component';
 import { TtcComponent } from './signals/ttc/ttc.component';
 import { Pere } from './commInterCompo/pere/pere';
+import { CvPage } from './cv/cv-page/cv-page';
 
 @Component({
-  imports: [First, Seconf, Two, RotatingCard, Counter, FirstSignalComponent, TtcComponent, Pere],
+  imports: [First, Seconf, Two, RotatingCard, Counter, FirstSignalComponent, TtcComponent, Pere, CvPage],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',

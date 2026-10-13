@@ -8,7 +8,7 @@ import { Fils } from '../fils/fils';
   templateUrl: './pere.html',
 })
 export class Pere {
-handleMessage(message: string) {
-  alert(message);
-}
+  handleMessage(message: string) {
+    alert(message);
+  }
 }
