@@ -1,4 +1,4 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, input, output, signal } from '@angular/core';
 
 @Component({
   imports: [],
@@ -13,4 +13,9 @@ export class Fils {
       return 'Baba 9ali '+ value
     }
   });
+  sendMessageElBaba = output<string>();
+
+  sendMessage() {
+    this.sendMessageElBaba.emit('Ok ama nkhali 3andi el Ba9i');
+  }
 }

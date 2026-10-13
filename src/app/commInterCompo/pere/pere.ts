@@ -7,4 +7,8 @@ import { Fils } from '../fils/fils';
   styleUrl: './pere.css',
   templateUrl: './pere.html',
 })
-export class Pere {}
+export class Pere {
+handleMessage(message: string) {
+  alert(message);
+}
+}
