@@ -8,6 +8,10 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './ttc.component.css',
 })
 export class TtcComponent {
+  /**
+   * var entière
+   * elle représente le prix hors taxe du produit
+  */
   priceHt = signal(0);
   taxe = signal(18);
   qty = signal(1);
