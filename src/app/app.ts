@@ -8,9 +8,10 @@ import { FirstSignalComponent } from './signals/first-signal/first-signal.compon
 import { TtcComponent } from './signals/ttc/ttc.component';
 import { Pere } from './commInterCompo/pere/pere';
 import { CvPage } from './cv/cv-page/cv-page';
+import { MiniWordComponent } from './directive/mini-word/mini-word.component';
 
 @Component({
-  imports: [First, Seconf, Two, RotatingCard, Counter, FirstSignalComponent, TtcComponent, Pere, CvPage],
+  imports: [First, Seconf, Two, RotatingCard, Counter, FirstSignalComponent, TtcComponent, Pere, CvPage, MiniWordComponent],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',

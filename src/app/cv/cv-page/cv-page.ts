@@ -2,10 +2,9 @@ import { Component, signal } from '@angular/core';
 import { Cv } from '../model/cv';
 import { CvList } from '../cv-list/cv-list';
 import { CvCard } from '../cv-card/cv-card';
-import { NgIf } from '../../../../node_modules/@angular/common/types/_common_module-chunk';
 
 @Component({
-  imports: [CvList, CvCard, NgIf],
+  imports: [CvList, CvCard],
   selector: 'app-cv-page',
   styleUrl: './cv-page.css',
   templateUrl: './cv-page.html',
