@@ -1,11 +1,11 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { First } from './component/first/first';
 import { Seconf } from './component/seconf/seconf';
-import { Color } from './components/color/color';
+import { Two } from './component/two/two';
+import { RotatingCard } from './component/rotating-card/rotating-card';
 
 @Component({
-  imports: [First, Seconf, Color],
+  imports: [First, Seconf, Two, RotatingCard],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
