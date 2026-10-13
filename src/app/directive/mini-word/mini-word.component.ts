@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./mini-word.component.css']
 })
 export class MiniWordComponent {
-
+  // 1 On définit le state
 }
