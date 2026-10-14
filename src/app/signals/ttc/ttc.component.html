@@ -8,12 +8,12 @@
 
 <div class="row">
   <div class="col alert alert-primary">
-    Prix Unitaire TTC: {{unitaireTtc()}}
+    Prix Unitaire TTC: {{unitaireTtc() | currency: 'EUR' : 'symbol'}}
   </div>
   <div class="col alert alert-success">
-    Prix Total TTC: {{totalTtc()}}
+    Prix Total TTC: {{totalTtc() | currency: 'EUR' : 'symbol'}}
   </div>
   <div class="col alert alert-danger">
-    Discount: {{discount()}}
+    Discount: {{discount() | currency: 'EUR' : 'symbol'}}
   </div>
 </div>

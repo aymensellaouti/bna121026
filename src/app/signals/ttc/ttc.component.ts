@@ -1,8 +1,9 @@
+import { CurrencyPipe, TitleCasePipe } from '@angular/common';
 import { Component, computed, effect, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  imports: [FormsModule],
+  imports: [FormsModule, CurrencyPipe, TitleCasePipe],
   selector: 'app-ttc',
   templateUrl: './ttc.component.html',
   styleUrl: './ttc.component.css',
@@ -11,7 +12,7 @@ export class TtcComponent {
   /**
    * var entière
    * elle représente le prix hors taxe du produit
-  */
+   */
   priceHt = signal(0);
   taxe = signal(18);
   qty = signal(1);
