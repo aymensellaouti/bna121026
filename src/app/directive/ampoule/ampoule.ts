@@ -1,7 +1,8 @@
 import { Component, signal } from '@angular/core';
+import { Highlight } from '../highlight';
 
 @Component({
-  imports: [],
+  imports: [Highlight],
   selector: 'app-ampoule',
   styleUrl: './ampoule.css',
   templateUrl: './ampoule.html',
