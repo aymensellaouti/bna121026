@@ -11,6 +11,7 @@ import { CvService } from '../services/cv.service';
 })
 export class CvItem {
   cv = input.required<Cv>();
+  size = input(50);
   cvService = inject(CvService);
   // selectCv = output<Cv>();
 

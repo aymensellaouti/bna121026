@@ -6,9 +6,10 @@ import { LoggerService } from '../../services/logger.service';
 import { SayHelloService } from '../../services/say-hello';
 import { ToastrService } from 'ngx-toastr';
 import { CvService } from '../services/cv.service';
+import { EmbaucheComponent } from '../embauche/embauche.component';
 
 @Component({
-  imports: [CvList, CvCard],
+  imports: [CvList, CvCard, EmbaucheComponent],
   selector: 'app-cv-page',
   styleUrl: './cv-page.css',
   templateUrl: './cv-page.html',
