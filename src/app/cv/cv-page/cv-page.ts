@@ -15,21 +15,10 @@ import { CvService } from '../services/cv.service';
 })
 export class CvPage {
   toastr = inject(ToastrService);
-  cvs = signal<Cv[]>([
-    new Cv(1, 'sellaouti', 'aymen', 'teacher', '12324', 'rotating_card_profile2.png', 44),
-    new Cv(2, 'gasmi', 'rihab', 'Ingénieur', '4444', '     ', 20),
-    new Cv(3, 'gasmi', 'rihab', 'Ingénieur', '4444', '     ', 20),
-    new Cv(4, 'Maghraoui', 'Tarek', 'Ingénieur', '4444', '     ', 20),
-    new Cv(5, 'Ouerghi', 'Walid', 'Ingénieur', '4444', '     ', 20),
-    new Cv(6, 'Bouzayene', 'Nourhene', 'Ingénieur', '4444', '     ', 20),
-    new Cv(7, 'Zoghlami', 'Alaeddine', 'Ingénieur', '4444', '     ', 20),
-    new Cv(8, 'Allani', 'Amira', 'Ingénieur', '4444', '     ', 20),
-    new Cv(9, 'Naouar', 'Nadhem', 'Ingénieur', '4444', '     ', 20),
-    new Cv(10, 'sellaouti', 'skander', 'student', '4444', '     ', 7),
-  ]);
+  cvService = inject(CvService)
+  cvs = this.cvService.getCvs();
   loggerService = inject(LoggerService);
   helloService = inject(SayHelloService);
-  cvService = inject(CvService)
   selectedCv = this.cvService.selectedCv;
   constructor() {
     this.helloService.hello();

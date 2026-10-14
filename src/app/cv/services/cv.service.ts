@@ -54,6 +54,6 @@ export class CvService {
   }
 
   selectCv(cv: Cv) {
-    this.#selectedCv.set(cv);
+    this.#selectedCv.set(cv)
   }
 }
