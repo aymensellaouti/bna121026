@@ -49,8 +49,8 @@ export class CvService {
    * @param cv : Cv
    * @returns boolean
    */
-  deleteCv(cv: Cv): boolean {
-    return false;
+  deleteCv(cv: Cv): void {
+
   }
 
   selectCv(cv: Cv) {

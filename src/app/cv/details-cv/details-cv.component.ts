@@ -10,4 +10,7 @@ export class DetailsCvComponent {
   cv = signal<Cv | null>(null);
 
   constructor() {}
+  // Todo: Récupérer l'id
+  // Todo : Chercher le cv ayant cet id
+  // Todo :  Méthode delete
 }
