@@ -6,3 +6,6 @@
 
 @import './../public/css/rotating-card.css';
 
+.ng-invalid.ng-touched {
+  border: red solid 2px;
+}
