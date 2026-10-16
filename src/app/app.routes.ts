@@ -1,3 +1,14 @@
 import { Routes } from '@angular/router';
+import { First } from './component/first/first';
+import { MiniWordComponent } from './directive/mini-word/mini-word.component';
+import { TodoComponent } from './todo/todo/todo.component';
+import { Color } from './component/color/color';
+import { CvPage } from './cv/cv-page/cv-page';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  {path:'', component: First},
+  {path:'cv', component: CvPage},
+  {path:'word', component: MiniWordComponent},
+  {path:'todo', component: TodoComponent},
+  {path:'color', component: Color},
+];

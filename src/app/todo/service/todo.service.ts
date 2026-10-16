@@ -1,10 +1,8 @@
-import { inject, Injectable, Signal, signal } from "@angular/core";
+import { inject, Injectable, Service, Signal, signal } from "@angular/core";
 import { Todo } from "../model/todo";
 import { LoggerService } from "../../services/logger.service";
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class TodoService {
   #todos = signal<Todo[]>([]);
   todos = this.#todos.asReadonly();
