@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, OnDestroy, signal } from '@angular/core';
 import { Cv } from '../model/cv';
 import { CvList } from '../cv-list/cv-list';
 import { CvCard } from '../cv-card/cv-card';
@@ -14,7 +14,7 @@ import { EmbaucheComponent } from '../embauche/embauche.component';
   styleUrl: './cv-page.css',
   templateUrl: './cv-page.html',
 })
-export class CvPage {
+export class CvPage implements OnDestroy{
   toastr = inject(ToastrService);
   cvService = inject(CvService)
   cvs = this.cvService.getCvs();
@@ -25,5 +25,9 @@ export class CvPage {
     this.helloService.hello();
     this.loggerService.logger('cc je suis la CvTech');
     this.toastr.info('cc je suis la CvTech');
+  }
+  ngOnDestroy(): void {
+    console.log("Merci d'avoir visité la cvTech au plaisir de vous revoir une prochaine fois ");
+
   }
 }

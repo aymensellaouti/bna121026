@@ -7,13 +7,19 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" routerLink="">Home</a>
-        <a class="nav-link" routerLink="cv">cv</a>
-        <a class="nav-link" routerLink="todo">todo</a>
-        <a class="nav-link" routerLink="color">color</a>
-        <a class="nav-link" routerLink="word">word</a>
+        <a
+          class="nav-link"
+          routerLink=""
+          routerLinkActive="active text-primary"
+          [routerLinkActiveOptions]="{exact: true}"
+        >Home</a>
+        <a class="nav-link" routerLink="cv" routerLinkActive="active text-primary">cv</a>
+        <a class="nav-link" routerLink="todo" routerLinkActive="active text-primary">todo</a>
+        <a class="nav-link" routerLink="color" routerLinkActive="active text-primary">color</a>
+        <a class="nav-link" routerLink="word" routerLinkActive="active text-primary">word</a>
 
       </div>
     </div>
   </div>
 </nav>
+
