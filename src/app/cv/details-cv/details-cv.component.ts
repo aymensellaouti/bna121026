@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, input, signal } from "@angular/core";
+import { Component, computed, effect, inject, input, OnInit, signal } from "@angular/core";
 import { Cv } from "../model/cv";
 import { CvService } from "../services/cv.service";
 import { DefaultImagePipe } from "../pipes/default-image-pipe";
@@ -11,26 +11,39 @@ import { Router } from "@angular/router";
   templateUrl: './details-cv.component.html',
   styleUrls: ['./details-cv.component.css'],
 })
-export class DetailsCvComponent {
+export class DetailsCvComponent implements OnInit {
   cvService = inject(CvService);
   router = inject(Router);
   id = input.required<number>();
-  cv = computed<Cv | null>(() => this.cvService.findCvById(this.id()));
-  notfoundEffect = effect(() => {
-    if (!this.cv()) {
-      this.router.navigate([APP_ROUTES.cv]);
-    }
-  });
+  cv = signal<Cv | null>(null);
+  // notfoundEffect = effect(() => {
+  //   if (!this.cv()) {
+  //     this.router.navigate([APP_ROUTES.cv]);
+  //   }
+  // });
   // effect bech ngérie traitement
-  constructor() {}
+  constructor() {
+
+  }
+  ngOnInit(): void {
+    this.cvService.findCvByIdFromApi(this.id()).subscribe({
+      next: cv => this.cv.set(cv),
+      error: (e) => {
+        this.router.navigate([APP_ROUTES.cv]);
+      }
+    });
+  }
   // Todo: Récupérer l'id
   // Todo : Chercher le cv ayant cet id
   // Todo :  Méthode delete
   deleteCv() {
     const cv = this.cv()
     if (cv) {
-      this.cvService.deleteCv(cv);
-      this.router.navigate([APP_ROUTES.cv]);
+      this.cvService.deleteCvByIdFromApi(cv.id).subscribe({
+        next: () => {
+          this.router.navigate([APP_ROUTES.cv]);
+        }
+      });
     }
   }
 }

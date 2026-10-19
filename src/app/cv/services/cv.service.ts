@@ -1,5 +1,8 @@
-import {  Injectable, Signal, signal } from '@angular/core';
+import {  inject, Injectable, Signal, signal } from '@angular/core';
 import { Cv } from '../model/cv';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { APP_API } from '../../config/app-api.config';
 
 
 @Injectable({
@@ -16,10 +19,11 @@ export class CvService {
     new Cv(6, 'Bouzayene', 'Nourhene', 'Ingénieur', '4444', '     ', 20),
     new Cv(7, 'Zoghlami', 'Alaeddine', 'Ingénieur', '4444', '     ', 20),
     new Cv(8, 'Allani', 'Amira', 'Ingénieur', '4444', '     ', 20),
-    new Cv(9, 'Naouar', 'Nadhem', 'Ingénieur', '4444', '     ', 20),
+    new Cv(9, 'Naouar', 'Kadhem', 'Ingénieur', '4444', '     ', 20),
     new Cv(10, 'sellaouti', 'skander', 'student', '4444', '     ', 7),
   ]);
   cvs = this.#cvs.asReadonly();
+  httpClient = inject(HttpClient)
   // Gestion SelectedCv
   #selectedCv = signal<Cv | null>(null);
   selectedCv = this.#selectedCv.asReadonly();
@@ -27,8 +31,15 @@ export class CvService {
    * Retourne la liste des cvs
    * @returns Cv[]
    */
-  getCvs(): Signal<Cv[]> {
-    return this.cvs;
+  getFakeCvs(): Cv[] {
+    return this.cvs();
+  }
+  /**
+   * Retourne la liste des cvs sous foorme d'un observable
+   * @returns Cv[]
+   */
+  getCvs(): Observable<Cv[]> {
+        return this.httpClient.get<Cv[]>(APP_API.cv);
   }
 
   /**
@@ -40,6 +51,33 @@ export class CvService {
    */
   findCvById(id: number): Cv | null {
     return this.#cvs().find(cv => cv.id == id) ?? null;
+  }
+
+  /**
+   *
+   * Cherche un cv avec son id dans lai liste fictive de cvs
+   *
+   * @param id
+   * @returns Cv | null
+   */
+  findCvByIdFromApi(id: number): Observable<Cv> {
+    return this.httpClient.get<Cv>(APP_API.cv + id);
+  }
+
+  /**
+   *
+   * Supprime un cv avec son id
+   *
+   * @param id
+   * @returns Cv
+   */
+  deleteCvByIdFromApi(id: number): Observable<{count: number}> {
+    const params = new HttpParams().set('esmElParams','valueMta3ElParams');
+    const headers = new HttpHeaders().set('esmElHeader','valueMta3ElHeaders');
+    return this.httpClient.delete<{ count: number }>(APP_API.cv + id, {
+      headers,
+      params
+    });
   }
 
   /**

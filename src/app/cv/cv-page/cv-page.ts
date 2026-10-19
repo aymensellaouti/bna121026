@@ -17,7 +17,7 @@ import { EmbaucheComponent } from '../embauche/embauche.component';
 export class CvPage implements OnDestroy{
   toastr = inject(ToastrService);
   cvService = inject(CvService)
-  cvs = this.cvService.getCvs();
+  cvs = signal<Cv[]>([]);
   loggerService = inject(LoggerService);
   helloService = inject(SayHelloService);
   selectedCv = this.cvService.selectedCv;
@@ -25,6 +25,13 @@ export class CvPage implements OnDestroy{
     this.helloService.hello();
     this.loggerService.logger('cc je suis la CvTech');
     this.toastr.info('cc je suis la CvTech');
+    this.cvService.getCvs().subscribe({
+      next: (cvs) => this.cvs.set(cvs),
+      error: (e) => {
+        this.toastr.error("Les données sont fictives, veuillez contacter l'admin");
+        this.cvs.set(this.cvService.getFakeCvs());
+      }
+    })
   }
   ngOnDestroy(): void {
     console.log("Merci d'avoir visité la cvTech au plaisir de vous revoir une prochaine fois ");
