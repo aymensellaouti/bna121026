@@ -11,6 +11,16 @@
         </li>
       }
     </ol>
+        <ol class="list-group">
+          @for (todoApi of todosApi(); track todoApi.id) {
+          <li  class="list-group-item" [class]="{
+          'list-group-item-success':todoApi.completed,
+          'list-group-item-danger':!todoApi.completed
+        }">
+            {{todoApi.title}}
+          </li>
+          }
+        </ol>
   </div>
   <div class="col">
     name:
@@ -25,3 +35,4 @@
     </button>
   </div>
 </div>
+<app-test-rxjs/>
