@@ -7,9 +7,10 @@ import { HttpClient } from "@angular/common/http";
 import { TodoApi } from "../model/todo-api.model";
 import { APP_CONST } from "../../config/app-const.config";
 import { FakeTodoService } from "../service/fake-todo.service";
+import { SingleTodo } from "../single-todo/single-todo";
 
 @Component({
-  imports: [FormsModule, TestRxjs],
+  imports: [FormsModule, TestRxjs, SingleTodo],
   selector: 'app-todo',
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.css'],

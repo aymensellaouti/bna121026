@@ -1,0 +1,12 @@
+<p>single-todo works!</p>
+@if (todoResource.isLoading()) {
+  <div class="alert alert-danger">
+    loading...
+  </div>
+} @else {
+  {{todoResource.value()?.title}}
+  @if(id() > 1) {
+    <button (click)="id.update(v => v-1)" class="btn btn-success">Prev</button>
+  }
+  <button (click)="id.update(v => v+1)" class="btn btn-success">Next</button>
+}
