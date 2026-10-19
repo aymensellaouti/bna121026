@@ -17,4 +17,7 @@ export class Auth {
       tap(response => localStorage.setItem(APP_CONST.token, response.id))
     );
   }
+  logout() {
+    localStorage.removeItem(APP_CONST.token);
+  }
 }

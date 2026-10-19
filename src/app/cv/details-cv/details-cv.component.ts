@@ -4,6 +4,7 @@ import { CvService } from "../services/cv.service";
 import { DefaultImagePipe } from "../pipes/default-image-pipe";
 import { APP_ROUTES } from "../../config/app-routes.config";
 import { Router } from "@angular/router";
+import { Auth } from "../../auth/service/auth";
 
 @Component({
   imports: [DefaultImagePipe],
@@ -14,6 +15,7 @@ import { Router } from "@angular/router";
 export class DetailsCvComponent implements OnInit {
   cvService = inject(CvService);
   router = inject(Router);
+  authService = inject(Auth);
   id = input.required<number>();
   cv = signal<Cv | null>(null);
   // notfoundEffect = effect(() => {
@@ -22,27 +24,25 @@ export class DetailsCvComponent implements OnInit {
   //   }
   // });
   // effect bech ngérie traitement
-  constructor() {
-
-  }
+  constructor() {}
   ngOnInit(): void {
     this.cvService.findCvByIdFromApi(this.id()).subscribe({
-      next: cv => this.cv.set(cv),
+      next: (cv) => this.cv.set(cv),
       error: (e) => {
         this.router.navigate([APP_ROUTES.cv]);
-      }
+      },
     });
   }
   // Todo: Récupérer l'id
   // Todo : Chercher le cv ayant cet id
   // Todo :  Méthode delete
   deleteCv() {
-    const cv = this.cv()
+    const cv = this.cv();
     if (cv) {
       this.cvService.deleteCvByIdFromApi(cv.id).subscribe({
         next: () => {
           this.router.navigate([APP_ROUTES.cv]);
-        }
+        },
       });
     }
   }
