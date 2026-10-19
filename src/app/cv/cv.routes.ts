@@ -1,14 +1,29 @@
-import { Routes } from "@angular/router";
-import { AddCv } from "./add-cv/add-cv";
-import { CvPage } from "./cv-page/cv-page";
-import { DetailsCvComponent } from "./details-cv/details-cv.component";
-import { authGuard } from "../auth/guards/auth-guard";
+import { Routes } from '@angular/router';
+
+import { authGuard } from '../auth/guards/auth-guard';
 
 export const CV_ROUTES: Routes = [
-  {path: 'cv',canActivateChild:[] , children: [
-    { path: '', component: CvPage },
-    { path: 'add', component: AddCv, canActivate: [authGuard] },
-    { path: ':id', component: DetailsCvComponent },
-  ]}
+  {
+    path: 'cv',
+    canActivateChild: [],
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./cv-page/cv-page').then((m) => m.CvPage),
+      data: {
+        preload: true
+      } },
+      {
+        path: 'add',
+        loadComponent: () => import('./add-cv/add-cv').then((m) => m.AddCv),
+        canActivate: [authGuard],
+      },
+      {
+        path: ':id',
+        loadComponent: () =>
+          import('./details-cv/details-cv.component').then((m) => m.DetailsCvComponent),
+      },
+    ],
+  },
   // Add detailCv route
 ];
