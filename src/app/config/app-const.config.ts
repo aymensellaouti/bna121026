@@ -3,4 +3,5 @@ export const APP_CONST = {
   env: 'prod',
   tokenParamName: 'access_token',
   authHeadersName: 'Authorization',
+  token: 'token',
 };

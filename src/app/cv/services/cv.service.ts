@@ -3,6 +3,7 @@ import { Cv } from '../model/cv';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { APP_API } from '../../config/app-api.config';
+import { APP_CONST } from '../../config/app-const.config';
 
 
 @Injectable({
@@ -72,11 +73,12 @@ export class CvService {
    * @returns Cv
    */
   deleteCvByIdFromApi(id: number): Observable<{count: number}> {
-    const params = new HttpParams().set('esmElParams','valueMta3ElParams');
-    const headers = new HttpHeaders().set('esmElHeader','valueMta3ElHeaders');
+    const token = localStorage.getItem(APP_CONST.token) ?? '';
+    const params = new HttpParams().set(APP_CONST.tokenParamName,token);
+    const headers = new HttpHeaders().set(APP_CONST.authHeadersName, token);
     return this.httpClient.delete<{ count: number }>(APP_API.cv + id, {
       headers,
-      params
+    //  params
     });
   }
 
