@@ -5,13 +5,18 @@ import { FormsModule } from "@angular/forms";
 import { TestRxjs } from "../../rxjs/test-rxjs/test-rxjs";
 import { HttpClient } from "@angular/common/http";
 import { TodoApi } from "../model/todo-api.model";
+import { APP_CONST } from "../../config/app-const.config";
+import { FakeTodoService } from "../service/fake-todo.service";
 
 @Component({
   imports: [FormsModule, TestRxjs],
   selector: 'app-todo',
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.css'],
-  providers: [TodoService]
+  providers: [{
+    provide: TodoService,
+    useClass: APP_CONST.env == 'dev'? FakeTodoService : TodoService
+  }]
 })
 export class TodoComponent {
   todoService = inject(TodoService);

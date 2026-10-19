@@ -4,6 +4,7 @@ import { LoggerService } from "../../services/logger.service";
 import { HttpClient } from "@angular/common/http";
 import { TodoApi } from "../model/todo-api.model";
 import { Observable } from "rxjs";
+import { APP_API } from "../../config/app-api.config";
 
 @Service()
 export class TodoService {
@@ -25,7 +26,7 @@ export class TodoService {
    * @returns Un observable des todos de l'api
    */
   getTodosFromApi(): Observable<TodoApi[]> {
-    return this.httpClient.get<TodoApi[]>('https://jsonplaceholder.typicode.com/todos');
+    return this.httpClient.get<TodoApi[]>(APP_API.todos);
   }
 
   /**
