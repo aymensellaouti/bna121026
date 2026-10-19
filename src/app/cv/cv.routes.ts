@@ -6,9 +6,9 @@ import { authGuard } from "../auth/guards/auth-guard";
 
 export const CV_ROUTES: Routes = [
   {path: 'cv',canActivateChild:[] , children: [
-    { path: 'cv', component: CvPage },
-    { path: 'cv/add', component: AddCv, canActivate: [authGuard] },
-    { path: 'cv/:id', component: DetailsCvComponent },
+    { path: '', component: CvPage },
+    { path: 'add', component: AddCv, canActivate: [authGuard] },
+    { path: ':id', component: DetailsCvComponent },
   ]}
   // Add detailCv route
 ];

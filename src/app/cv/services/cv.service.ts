@@ -73,13 +73,10 @@ export class CvService {
    * @returns Cv
    */
   deleteCvByIdFromApi(id: number): Observable<{count: number}> {
-    const token = localStorage.getItem(APP_CONST.token) ?? '';
-    const params = new HttpParams().set(APP_CONST.tokenParamName,token);
-    const headers = new HttpHeaders().set(APP_CONST.authHeadersName, token);
-    return this.httpClient.delete<{ count: number }>(APP_API.cv + id, {
-      headers,
-    //  params
-    });
+    // const token = localStorage.getItem(APP_CONST.token) ?? '';
+    // const params = new HttpParams().set(APP_CONST.tokenParamName,token);
+    // const headers = new HttpHeaders().set(APP_CONST.authHeadersName, token);
+    return this.httpClient.delete<{ count: number }>(APP_API.cv + id  );
   }
 
   /**
